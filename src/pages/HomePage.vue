@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import { Button } from '@/shared/button/';
+import { Container } from '@/shared/container';
+import { Button } from '@/shared/button';
 </script>
 
 <template>
   <div>
-    <Button size="s" color="primary">Вход</Button>
+    <Container>
+      <Button size="s" color="primary">Вход</Button>
+    </Container>
   </div>
 </template>
 
