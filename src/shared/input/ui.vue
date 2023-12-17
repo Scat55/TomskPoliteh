@@ -59,4 +59,22 @@ const updateValue = (e: any) => {
   font-size: 1rem;
   letter-spacing: 2px;
 }
+.form-error {
+  display: inline-block;
+  width: 21.875rem;
+  margin-top: 0.5rem;
+  color: $white_color;
+  border-radius: 0.625rem;
+  padding: 0.3125rem;
+  background-color: $error_color;
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
 </style>
