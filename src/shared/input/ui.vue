@@ -41,4 +41,22 @@ const updateValue = (e: any) => {
   </div>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+@import '../../app/assets/styles/index.scss';
+.form-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.input-text {
+  width: 21.875rem;
+  height: 4.375rem;
+  background: #f6f6f6;
+  border-radius: 0.625rem;
+  border: none;
+  outline: none;
+  padding: 1.875rem;
+  font-size: 1rem;
+  letter-spacing: 2px;
+}
+</style>

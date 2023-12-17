@@ -25,7 +25,7 @@ const v = useVuelidate(rules, {
       <Input
         type="text"
         name="name"
-        placeholder="Введите ваше имя"
+        placeholder="Логин"
         v-model:value="v.nameField.$model"
         :error="v.nameField.$errors"
         :disabled="false"
