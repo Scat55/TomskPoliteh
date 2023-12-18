@@ -6,7 +6,9 @@ import { Input } from '@/shared/input';
 import { LeftMenu } from '@/shared/leftMenu';
 import useVuelidate from '@vuelidate/core';
 import { minLength, helpers, required } from '@vuelidate/validators';
+import { useRouter } from 'vue-router';
 
+const router = useRouter();
 const nameField = ref('');
 const passwordField = ref('');
 
@@ -29,6 +31,7 @@ const handler = () => {
 
   if (v.value.$error) return;
 
+  router.push('/forms');
   nameField.value = passwordField.value = '';
 };
 </script>
