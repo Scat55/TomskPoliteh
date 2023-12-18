@@ -2,6 +2,7 @@
 import { RouterLink } from 'vue-router';
 import { LeftMenu } from '@/shared/leftMenu';
 import { Button } from '@/shared/button';
+import { CardForm } from '@/widgets';
 import { useRouter } from 'vue-router';
 const router = useRouter();
 const logOut = () => {
@@ -10,7 +11,7 @@ const logOut = () => {
 </script>
 
 <template>
-  <div>
+  <div class="forms">
     <LeftMenu>
       <div class="links">
         <RouterLink to="/forms" class="links__link">Формы</RouterLink>
@@ -18,11 +19,25 @@ const logOut = () => {
       </div>
       <Button class="btn" color="white" @click="logOut">Выход</Button>
     </LeftMenu>
+    <div class="rightMenu">
+      <div class="rightMenu__heading">
+        <h2 class="rightMenu__heading-title">Формы</h2>
+        <Button size="s" class="rightMenu__heading-btn">Создать форму</Button>
+      </div>
+
+      <div class="rightMenu__forms">
+        <CardForm />
+      </div>
+    </div>
   </div>
 </template>
 
 <style scoped lang="scss">
 @import '../app/assets/styles/index.scss';
+.forms {
+  display: flex;
+  gap: 1.875rem;
+}
 .links {
   margin-top: 1.875rem;
   display: inline-flex;
@@ -41,7 +56,53 @@ const logOut = () => {
 .router-link-active {
   color: $primary_color;
 }
-// .router-link-exact-active {
 
-// }
+.rightMenu {
+  display: flex;
+  flex-direction: column;
+  width: 51.5625rem;
+  margin-top: 5rem;
+
+  &__heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 3.125rem;
+
+    &-title {
+      font-size: 2.5rem;
+      font-weight: 500;
+    }
+    &-btn {
+      width: 12rem;
+      font-weight: 500;
+    }
+  }
+
+  &__form {
+    height: 11.875rem;
+    border-radius: 10px;
+    background: #fff;
+    padding: 1.5rem;
+    &-content {
+      display: flex;
+      justify-content: space-between;
+    }
+    &-title {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+    &-text {
+      display: flex;
+      flex-direction: column;
+    }
+    &-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3.625rem;
+    }
+  }
+}
 </style>
