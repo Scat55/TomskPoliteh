@@ -5,7 +5,7 @@ import { Button } from '@/shared/button';
 import { Input } from '@/shared/input';
 import { LeftMenu } from '@/shared/leftMenu';
 import useVuelidate from '@vuelidate/core';
-import { maxLength, helpers, required } from '@vuelidate/validators';
+import { minLength, helpers, required } from '@vuelidate/validators';
 
 const nameField = ref('');
 const passwordField = ref('');
@@ -15,7 +15,8 @@ const rules = computed(() => ({
     required: helpers.withMessage(`Обязательное поле`, required)
   },
   passwordField: {
-    required: helpers.withMessage(`Обязательное поле`, required)
+    required: helpers.withMessage(`Обязательное поле`, required),
+    minLength: helpers.withMessage(`Пароль должен быть не меньше 8 символов`, minLength(8))
   }
 }));
 const v = useVuelidate(rules, {
@@ -28,8 +29,7 @@ const handler = () => {
 
   if (v.value.$error) return;
 
-  alert('Успешно');
-  console.log(nameField.value);
+  nameField.value = passwordField.value = '';
 };
 </script>
 
