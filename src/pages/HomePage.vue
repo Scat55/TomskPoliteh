@@ -41,6 +41,8 @@ const handler = () => {
       <LeftMenu>
         <div class="authForm">
           <div class="authForm__inputs">
+            <h1 class="firstPage__title">Авторизация</h1>
+
             <Input
               type="text"
               name="name"
@@ -81,10 +83,17 @@ const handler = () => {
 
 <style scoped lang="scss">
 @import '../app/assets/styles/index.scss';
+.firstPage {
+  &__title {
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin: 1.875rem 0;
+  }
+}
 .authForm {
   display: flex;
   flex-direction: column;
-  margin-top: 2rem;
+
   gap: 1.875rem;
 
   &__inputs {
