@@ -9,8 +9,8 @@ interface Props {
   type: string;
   placeholder?: string;
   disabled?: boolean;
-  error: ErrorObject[];
-  value: Ref<string>;
+  error?: ErrorObject[];
+  value?: Ref<string>;
   name: string;
 }
 const props = defineProps<Props>();
@@ -49,7 +49,7 @@ const updateValue = (e: any) => {
   justify-content: center;
 }
 .input-text {
-  width: 21.875rem;
+  max-width: 21.875rem;
   height: 4.375rem;
   background: #f6f6f6;
   border-radius: 0.625rem;
@@ -61,7 +61,7 @@ const updateValue = (e: any) => {
 }
 .form-error {
   display: inline-block;
-  width: 21.875rem;
+  max-width: 21.875rem;
   margin-top: 0.5rem;
   color: $white_color;
   border-radius: 0.625rem;

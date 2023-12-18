@@ -48,6 +48,7 @@ const handler = () => {
               v-model:value="v.nameField.$model"
               :error="v.nameField.$errors"
               :disabled="false"
+              class="input"
             />
             <Input
               type="password"
@@ -56,6 +57,7 @@ const handler = () => {
               v-model:value="v.passwordField.$model"
               :error="v.passwordField.$errors"
               :disabled="false"
+              class="input"
             />
           </div>
           <Button size="s" color="primary" type="submit">Вход</Button>
@@ -111,6 +113,9 @@ const handler = () => {
       cursor: pointer;
     }
   }
+}
+.input {
+  width: 21.875rem;
 }
 .firstPage {
   display: flex;
