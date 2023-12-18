@@ -16,10 +16,12 @@ import { Container } from '../container/';
 <style lang="scss" scoped>
 @import '../../app/assets/styles/index.scss';
 .menu {
+  position: relative;
   background-color: $white_color;
   width: 624px;
   height: 100vh;
   border-radius: 0.625rem;
+  z-index: 1;
 
   &__logo {
     padding-top: 5rem;

@@ -34,42 +34,45 @@ const handler = () => {
 </script>
 
 <template>
-  <form @submit.prevent="handler">
-    <LeftMenu>
-      <div class="authForm">
-        <div class="authForm__inputs">
-          <Input
-            type="text"
-            name="name"
-            placeholder="Логин"
-            v-model:value="v.nameField.$model"
-            :error="v.nameField.$errors"
-            :disabled="false"
-          />
-          <Input
-            type="password"
-            name="password"
-            placeholder="Пароль"
-            v-model:value="v.passwordField.$model"
-            :error="v.passwordField.$errors"
-            :disabled="false"
-          />
-        </div>
-        <Button size="s" color="primary" type="submit">Вход</Button>
+  <div class="firstPage">
+    <form @submit.prevent="handler">
+      <LeftMenu>
+        <div class="authForm">
+          <div class="authForm__inputs">
+            <Input
+              type="text"
+              name="name"
+              placeholder="Логин"
+              v-model:value="v.nameField.$model"
+              :error="v.nameField.$errors"
+              :disabled="false"
+            />
+            <Input
+              type="password"
+              name="password"
+              placeholder="Пароль"
+              v-model:value="v.passwordField.$model"
+              :error="v.passwordField.$errors"
+              :disabled="false"
+            />
+          </div>
+          <Button size="s" color="primary" type="submit">Вход</Button>
 
-        <div class="authForm__text">
-          <p class="authForm__text-title">
-            Если возникла проблема, то можете написать<span class="authForm__text-green">
-              Алёне из Сибтеха</span
-            >
-          </p>
-          <p class="authForm__text-title">
-            С любовью, ваш <span class="authForm__text-green">Сибтех</span>
-          </p>
+          <div class="authForm__text">
+            <p class="authForm__text-title">
+              Если возникла проблема, то можете написать<span class="authForm__text-green">
+                Алёне из Сибтеха</span
+              >
+            </p>
+            <p class="authForm__text-title">
+              С любовью, ваш <span class="authForm__text-green">Сибтех</span>
+            </p>
+          </div>
         </div>
-      </div>
-    </LeftMenu>
-  </form>
+      </LeftMenu>
+    </form>
+    <div class="rightMenu"><img src="/src/app/assets/images/Group.png" alt="Group" /></div>
+  </div>
 </template>
 
 <style scoped lang="scss">
@@ -103,7 +106,25 @@ const handler = () => {
     &-green {
       color: $primary_color;
       text-decoration: underline;
+      cursor: pointer;
     }
+  }
+}
+.firstPage {
+  display: flex;
+  align-items: center;
+}
+.rightMenu {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: $primary_color;
+
+  img {
+    position: absolute;
+    width: 90%;
+    bottom: 0px;
+    left: -180px;
   }
 }
 </style>
