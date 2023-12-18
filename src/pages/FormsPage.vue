@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
 import { LeftMenu } from '@/shared/leftMenu';
+import { Button } from '@/shared/button';
+import { useRouter } from 'vue-router';
+const router = useRouter();
+const logOut = () => {
+  router.push('/');
+};
 </script>
 
 <template>
@@ -10,6 +16,7 @@ import { LeftMenu } from '@/shared/leftMenu';
         <RouterLink to="/forms" class="links__link">Формы</RouterLink>
         <RouterLink to="/reg" class="links__link">Пользователи</RouterLink>
       </div>
+      <Button class="btn" color="white" @click="logOut">Выход</Button>
     </LeftMenu>
   </div>
 </template>
@@ -28,7 +35,9 @@ import { LeftMenu } from '@/shared/leftMenu';
     text-decoration: none;
   }
 }
-
+.btn {
+  margin-top: 35.625rem;
+}
 .router-link-active {
   color: $primary_color;
 }
