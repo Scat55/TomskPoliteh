@@ -1,21 +1,28 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router';
 import { LeftMenu } from '@/shared/leftMenu';
 </script>
 
 <template>
-  <div>
-    <LeftMenu>
+  <div class="menu">
+    <LeftMenu class="leftMenu">
       <div class="links">
         <RouterLink to="/forms" class="links__link">Формы</RouterLink>
-        <RouterLink to="/reg" class="links__link">Пользователи</RouterLink>
+        <RouterLink to="" class="links__link">Пользователи</RouterLink>
       </div>
     </LeftMenu>
+    <div>JFJFJ</div>
   </div>
 </template>
 
 <style scoped lang="scss">
 @import '../app/assets/styles/index.scss';
+.menu {
+  display: flex;
+}
+.leftMenu {
+  display: flex;
+  flex-direction: column;
+}
 .links {
   margin-top: 1.875rem;
   display: inline-flex;

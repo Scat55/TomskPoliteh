@@ -1,15 +1,11 @@
-<script setup lang="ts">
-import { Container } from '../container/';
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="menu">
-    <Container>
-      <div class="menu__logo">
-        <img src="../../app/assets/images/logo.png" alt="Logo" />
-      </div>
-      <slot></slot>
-    </Container>
+    <div class="menu__logo">
+      <img src="../../app/assets/images/logo.png" alt="Logo" />
+    </div>
+    <slot></slot>
   </div>
 </template>
 
@@ -22,6 +18,7 @@ import { Container } from '../container/';
   height: 100vh;
   border-radius: 0.625rem;
   z-index: 1;
+  padding: 0 11.1875rem;
 
   &__logo {
     padding-top: 5rem;

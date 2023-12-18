@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import { Container } from '@/shared/container';
 import { Button } from '@/shared/button';
 import { Input } from '@/shared/input';
 import { LeftMenu } from '@/shared/leftMenu';
