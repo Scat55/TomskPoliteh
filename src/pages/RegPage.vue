@@ -3,6 +3,7 @@ import { ref, computed } from 'vue';
 import { LeftMenu } from '@/shared/leftMenu';
 import { Input } from '@/shared/input';
 import { Button } from '@/shared/button';
+import { Checkbox } from '@/shared/checkbox';
 import useVuelidate from '@vuelidate/core';
 import { helpers, required } from '@vuelidate/validators';
 
@@ -62,8 +63,14 @@ const handler = () => {
             :error="v.lastNameField.$errors"
           />
         </div>
+        <div class="form__info">
+          <Checkbox />
+          <p class="form__info-text">
+            Нажимая кнопку «Отправить», я принимаю условия политики конфиденциальности
+          </p>
+        </div>
 
-        <Button size="l" color="primary" type="submit">Отправить</Button>
+        <Button size="l" color="primary" type="submit" class="form__btn">Отправить</Button>
       </form>
     </div>
   </div>
@@ -103,7 +110,7 @@ const handler = () => {
 }
 .form {
   width: 21.8125rem;
-  height: 31.5rem;
+  min-height: 31.5rem;
   border-radius: 1.25rem;
   padding: 2.5rem;
   background-color: $white_color;
@@ -121,5 +128,24 @@ const handler = () => {
   &__input {
     width: 16.8125rem;
   }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    margin-top: 1.8438rem;
+    gap: 1rem;
+
+    &-text {
+      font-size: 0.875rem;
+      color: #212121;
+      opacity: 0.5;
+    }
+  }
+  &__btn {
+    margin-top: 3.0938rem;
+  }
+}
+.form-error__message {
+  padding: 2px;
 }
 </style>
