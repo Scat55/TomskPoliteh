@@ -56,12 +56,24 @@ const handler = () => {
           />
         </div>
         <Button size="s" color="primary" type="submit">Вход</Button>
+
+        <div class="authForm__text">
+          <p class="authForm__text-title">
+            Если возникла проблема, то можете написать<span class="authForm__text-green">
+              Алёне из Сибтеха</span
+            >
+          </p>
+          <p class="authForm__text-title">
+            С любовью, ваш <span class="authForm__text-green">Сибтех</span>
+          </p>
+        </div>
       </div>
     </LeftMenu>
   </form>
 </template>
 
 <style scoped lang="scss">
+@import '../app/assets/styles/index.scss';
 .authForm {
   display: flex;
   flex-direction: column;
@@ -72,6 +84,26 @@ const handler = () => {
     display: flex;
     flex-direction: column;
     gap: 0.625rem;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 16.25rem;
+    height: 4.5625rem;
+    margin-top: 19.375rem;
+
+    &-title {
+      color: $grey_color;
+      line-height: 24px;
+      letter-spacing: -0.64px;
+    }
+
+    &-green {
+      color: $primary_color;
+      text-decoration: underline;
+    }
   }
 }
 </style>
