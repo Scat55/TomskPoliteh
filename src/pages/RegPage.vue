@@ -7,8 +7,8 @@ import { Checkbox } from '@/shared/checkbox';
 import useVuelidate from '@vuelidate/core';
 import { helpers, required } from '@vuelidate/validators';
 
-const firstNameField = ref('');
-const lastNameField = ref('');
+const firstNameField = ref<string>('');
+const lastNameField = ref<string>('');
 
 const rules = computed(() => ({
   firstNameField: {
@@ -64,7 +64,7 @@ const handler = () => {
           />
         </div>
         <div class="form__info">
-          <Checkbox />
+          <Checkbox :required="true" />
           <p class="form__info-text">
             Нажимая кнопку «Отправить», я принимаю условия политики конфиденциальности
           </p>

@@ -1,8 +1,16 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+interface Props {
+  required?: boolean;
+}
+
+const props = defineProps<Props>();
+
+const { required } = props;
+</script>
 
 <template>
   <label>
-    <input type="checkbox" class="realchek" :required="true" />
+    <input type="checkbox" class="realchek" :required="required" />
     <span class="customcheck"></span>
   </label>
 </template>
