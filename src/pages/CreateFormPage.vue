@@ -63,7 +63,14 @@ import { Input } from '@/shared/input';
 
       <div class="rightMenu__field">
         <h2 class="rightMenu__field-title">Поля</h2>
-        <Input type="text" name="name" placeholder="Логин" :disabled="false" class="input" />
+        <Input
+          type="text"
+          name="name"
+          placeholder="Логин"
+          :disabled="false"
+          class="input"
+          color="white"
+        />
       </div>
     </div>
   </div>
@@ -146,6 +153,7 @@ a:-webkit-any-link {
   color: $primary_color;
 }
 .input {
+  width: 415px;
   &::placeholder {
     background-color: #fff;
   }

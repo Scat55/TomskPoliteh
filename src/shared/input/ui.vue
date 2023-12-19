@@ -11,19 +11,21 @@ interface Props {
   disabled?: boolean;
   error?: ErrorObject[];
   value?: Ref<string>;
+  color?: string;
   name: string;
 }
 const props = defineProps<Props>();
-
+const { color } = props;
 const updateValue = (e: any) => {
   emit('update:value', (e.target as HTMLInputElement).value);
 };
+const classes = ['input', 'input-text', `color_${color}`];
 </script>
 
 <template>
   <div class="form-input">
     <input
-      class="input-text"
+      :class="classes"
       :type="type"
       :name="name"
       :id="name"
@@ -49,7 +51,7 @@ const updateValue = (e: any) => {
   justify-content: center;
 }
 .input-text {
-  max-width: 21.875rem;
+  min-width: 16.8125rem;
   height: 4.375rem;
   background: #f6f6f6;
   border-radius: 0.625rem;
@@ -76,5 +78,8 @@ const updateValue = (e: any) => {
 .v-enter-from,
 .v-leave-to {
   opacity: 0;
+}
+.color_white {
+  background-color: #fff;
 }
 </style>
