@@ -13,6 +13,7 @@ interface Props {
   value?: Ref<string> | string;
   color?: string;
   name: string;
+  required?: boolean;
 }
 const props = defineProps<Props>();
 const { color } = props;
@@ -32,6 +33,7 @@ const classes = ['input', 'input-text', `color_${color}`];
       :disabled="disabled"
       :placeholder="placeholder"
       :value="value"
+      :required="required"
       @input="updateValue"
     />
 

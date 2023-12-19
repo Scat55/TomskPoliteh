@@ -1,17 +1,29 @@
 <script setup lang="ts">
+const emits = defineEmits(['update:checked']);
 interface Props {
   required?: boolean;
+  checked?: boolean;
 }
 
 const props = defineProps<Props>();
 
-const { required } = props;
+const { required, checked } = props;
+
+const handleClick = (event: any) => {
+  emits('update:checked', event.target.checked);
+};
 </script>
 
 <template>
   <label>
-    <input type="checkbox" class="realchek" :required="required" />
-    <span class="customcheck"></span>
+    <input
+      type="checkbox"
+      class="realchek"
+      :required="required"
+      :checked="checked"
+      @input="handleClick($event)"
+    />
+    <span class="customcheck" :required="required" :checked="checked"></span>
   </label>
 </template>
 

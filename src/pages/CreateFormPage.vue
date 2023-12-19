@@ -9,78 +9,85 @@ import { ref } from 'vue';
 
 const valueInput = ref<string>('');
 const counter = ref<number>(0);
+const required = ref<boolean>(false);
+const isChecked = ref<boolean>(false);
 
 const handler = () => {
-  alert(1);
+  if (isChecked.value === true || valueInput.value !== '') {
+    alert(1);
+  } else {
+    alert('Ошибка');
+  }
 };
 </script>
 <template>
-  <div class="createForm">
-    <LeftMenu class="leftMenu">
-      <RouterLink to="/forms">
-        <div class="leftMenu__back">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="10"
-            height="10"
-            viewBox="0 0 10 10"
-            fill="none"
-          >
-            <path
-              d="M7.91659 5H2.08325"
-              stroke="black"
-              stroke-width="1.25"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M4.99992 7.91732L2.08325 5.00065L4.99992 2.08398"
-              stroke="black"
-              stroke-width="1.25"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-          <p class="leftMenu__back-title">Назад</p>
-        </div>
-      </RouterLink>
-      <div class="leftMenu__list">
-        <ul class="leftMenu__list-items">
-          <li class="leftMenu__list-item">Тип формы</li>
-          <li class="leftMenu__list-item">Сущности</li>
-          <RouterLink to=""> <li class="leftMenu__list-item">Поля</li></RouterLink>
-          <li class="leftMenu__list-item">Правила показа полей</li>
-          <li class="leftMenu__list-item">Другие настройки</li>
-        </ul>
-      </div>
-
-      <div class="leftMenu__buttons">
-        <Button color="white">Скрипт</Button>
-        <Button color="primary" @click="handler">Сохранить</Button>
-      </div>
-    </LeftMenu>
-
-    <div class="rightMenu">
-      <div class="rightMenu__text">
-        <h2 class="rightMenu__text-title">Поля</h2>
-        <p class="rightMenu__text-subtitle">Скрытые поля</p>
-      </div>
-      <BigButton class="rightMenu__bigButton" @click="counter++">
-        <p>Добавить поле</p>
-        <img src="../app/assets/images/plus.svg" alt="AddInput" />
-      </BigButton>
-
-      <div class="rightMenu__field">
-        <h2 class="rightMenu__field-title" v-if="counter > 0">Поля</h2>
-        <div class="rightMenu__field-content" v-for="count in counter">
-          <div class="rightMenu__field-spans" v-if="counter > 0">
-            <div>
-              <span class="value">{{ valueInput }}</span>
-              <span class="value"> Контакт</span>
-            </div>
-            <span class="remove" @click="counter--">Удалить поле</span>
+  <form @submit.prevent="handler">
+    <div class="createForm">
+      <LeftMenu class="leftMenu">
+        <RouterLink to="/forms">
+          <div class="leftMenu__back">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="10"
+              height="10"
+              viewBox="0 0 10 10"
+              fill="none"
+            >
+              <path
+                d="M7.91659 5H2.08325"
+                stroke="black"
+                stroke-width="1.25"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M4.99992 7.91732L2.08325 5.00065L4.99992 2.08398"
+                stroke="black"
+                stroke-width="1.25"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <p class="leftMenu__back-title">Назад</p>
           </div>
-          <form @submit.prevent="handler">
+        </RouterLink>
+        <div class="leftMenu__list">
+          <ul class="leftMenu__list-items">
+            <li class="leftMenu__list-item">Тип формы</li>
+            <li class="leftMenu__list-item">Сущности</li>
+            <RouterLink to=""> <li class="leftMenu__list-item">Поля</li></RouterLink>
+            <li class="leftMenu__list-item">Правила показа полей</li>
+            <li class="leftMenu__list-item">Другие настройки</li>
+          </ul>
+        </div>
+
+        <div class="leftMenu__buttons">
+          <Button color="white" type="button">Скрипт</Button>
+          <Button color="primary" @click="handler">Сохранить</Button>
+        </div>
+      </LeftMenu>
+
+      <div class="rightMenu">
+        <div class="rightMenu__text">
+          <h2 class="rightMenu__text-title">Поля</h2>
+          <p class="rightMenu__text-subtitle">Скрытые поля</p>
+        </div>
+        <BigButton class="rightMenu__bigButton" type="button" @click="counter++">
+          <p>Добавить поле</p>
+          <img src="../app/assets/images/plus.svg" alt="AddInput" />
+        </BigButton>
+
+        <div class="rightMenu__field">
+          <h2 class="rightMenu__field-title" v-if="counter > 0">Поля</h2>
+          <div class="rightMenu__field-content" v-for="count in counter">
+            <div class="rightMenu__field-spans" v-if="counter > 0">
+              <div>
+                <span class="value">{{ valueInput }}</span>
+                <span class="value"> Контакт</span>
+              </div>
+              <span class="remove" @click="counter--">Удалить поле</span>
+            </div>
+
             <Input
               type="text"
               name="name"
@@ -89,15 +96,18 @@ const handler = () => {
               :disabled="false"
               class="input"
               color="white"
+              :required="required"
             />
+
             <div class="isReq">
-              <Checkbox :required="false" /> <span class="question">Сделать поле обязательным</span>
+              <Checkbox :required="false" v-model:checked="isChecked" />
+              <span class="question">Сделать поле обязательным</span>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </form>
 </template>
 
 <style scoped lang="scss">
