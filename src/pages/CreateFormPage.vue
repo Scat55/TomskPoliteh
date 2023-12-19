@@ -4,7 +4,7 @@ import { LeftMenu } from '@/shared/leftMenu';
 import { Button } from '@/shared/button';
 </script>
 <template>
-  <div>
+  <div class="createForm">
     <LeftMenu class="leftMenu">
       <RouterLink to="/forms">
         <div class="leftMenu__back">
@@ -48,11 +48,23 @@ import { Button } from '@/shared/button';
         <Button color="primary">Сохранить</Button>
       </div>
     </LeftMenu>
+
+    <div class="rightMenu">
+      <div class="rightMenu__text">
+        <h2 class="rightMenu__text-title">Поля</h2>
+        <p class="rightMenu__text-subtitle">Скрытые поля</p>
+      </div>
+    </div>
   </div>
 </template>
 
 <style scoped lang="scss">
 @import '../app/assets/styles/index.scss';
+.createForm {
+  display: flex;
+  gap: 1.875rem;
+}
+
 .leftMenu {
   width: 27.125rem;
 
@@ -87,6 +99,22 @@ import { Button } from '@/shared/button';
     flex-direction: column;
     gap: 0.625rem;
     margin-bottom: 4.5rem;
+  }
+}
+.rightMenu {
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.875rem;
+    &-title {
+      font-size: 2.5rem;
+      font-weight: 500;
+      margin-top: 5rem;
+    }
+    &-subtitle {
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
   }
 }
 a:-webkit-any-link {
