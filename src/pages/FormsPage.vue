@@ -4,10 +4,16 @@ import { LeftMenu } from '@/shared/leftMenu';
 import { Button } from '@/shared/button';
 import { CardForm } from '@/widgets';
 import { useRouter } from 'vue-router';
+
+import { useGetForms } from '../app/stores/Forms';
+
+const formStore = useGetForms();
 const router = useRouter();
 const logOut = () => {
   router.push('/');
 };
+console.log(formStore);
+formStore.getFormsFromApi('/forms');
 </script>
 
 <template>
@@ -26,7 +32,13 @@ const logOut = () => {
       </div>
 
       <div class="rightMenu__forms">
-        <CardForm />
+        <CardForm
+          v-for="form of formStore.forms"
+          :key="form.id"
+          :title="form.title"
+          :author="form.author"
+          :data="form.data"
+        />
       </div>
     </div>
   </div>

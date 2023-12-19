@@ -1,15 +1,25 @@
 <script setup lang="ts">
 import { Button } from '@/shared/button';
+
+interface Props {
+  title: string;
+  author: string;
+  data: Date;
+}
+
+const props = defineProps<Props>();
+
+const { title, author, data } = props;
 </script>
 
 <template>
   <div class="rightMenu__form">
     <div class="rightMenu__form-content">
       <div class="rightMenu__form-text">
-        <p class="rightMenu__form-title">Форма регистрации участников</p>
+        <p class="rightMenu__form-title">{{ title }}</p>
 
-        <span class="author">Автор: user 1</span>
-        <span class="data">Дата создания: 01.01.23</span>
+        <span class="author">Автор: {{ author }}</span>
+        <span class="data">Дата создания: {{ data }}</span>
       </div>
       <div class="rightMenu__form-buttons">
         <Button size="l" color="white">Редактировать</Button>
