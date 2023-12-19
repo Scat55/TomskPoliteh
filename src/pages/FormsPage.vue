@@ -18,7 +18,7 @@ formStore.getFormsFromApi('/forms');
 
 <template>
   <div class="forms">
-    <LeftMenu>
+    <LeftMenu class="leftMenu">
       <div class="links">
         <RouterLink to="/forms" class="links__link">Формы</RouterLink>
         <RouterLink to="/reg" class="links__link">Пользователи</RouterLink>
@@ -46,6 +46,9 @@ formStore.getFormsFromApi('/forms');
 
 <style scoped lang="scss">
 @import '../app/assets/styles/index.scss';
+.leftMenu {
+  width: 27.125rem;
+}
 .forms {
   display: flex;
   gap: 1.875rem;
@@ -55,6 +58,7 @@ formStore.getFormsFromApi('/forms');
   display: inline-flex;
   flex-direction: column;
   gap: 1rem;
+  flex: 1;
 
   &__link {
     color: $black_color;
@@ -62,9 +66,7 @@ formStore.getFormsFromApi('/forms');
     text-decoration: none;
   }
 }
-.btn {
-  margin-top: 35.625rem;
-}
+
 .router-link-active {
   color: $primary_color;
 }
@@ -116,5 +118,8 @@ formStore.getFormsFromApi('/forms');
       gap: 3.625rem;
     }
   }
+}
+.btn {
+  margin-bottom: 4.5rem;
 }
 </style>

@@ -38,7 +38,7 @@ const handler = () => {
 <template>
   <div class="firstPage">
     <form @submit.prevent="handler">
-      <LeftMenu>
+      <LeftMenu class="leftMenu">
         <div class="authForm">
           <div class="authForm__inputs">
             <h1 class="firstPage__title">Авторизация</h1>
@@ -100,6 +100,7 @@ const handler = () => {
     display: flex;
     flex-direction: column;
     gap: 0.625rem;
+    flex: 1;
   }
 
   &__text {
@@ -108,7 +109,8 @@ const handler = () => {
     gap: 0.5rem;
     width: 16.25rem;
     height: 4.5625rem;
-    margin-top: 19.375rem;
+    flex: 0;
+    margin-top: 10%;
 
     &-title {
       color: $grey_color;
@@ -142,5 +144,11 @@ const handler = () => {
     bottom: 0px;
     left: -180px;
   }
+}
+
+.leftMenu {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 </style>

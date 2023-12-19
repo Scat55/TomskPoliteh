@@ -13,12 +13,14 @@
 @import '../../app/assets/styles/index.scss';
 .menu {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-left: 11.1875rem;
   background-color: $white_color;
-  width: 624px;
+  width: 39rem;
   height: 100vh;
   border-radius: 0.625rem;
   z-index: 1;
-  padding: 0 11.1875rem;
 
   &__logo {
     padding-top: 5rem;
