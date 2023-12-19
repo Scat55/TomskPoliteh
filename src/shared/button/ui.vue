@@ -34,6 +34,11 @@ const classes = ['button', `size_${size}`, `color_${color}`];
   line-height: normal;
   border-radius: 0.625rem;
   cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 
   &.color_primary {
     background-color: $primary_color;
