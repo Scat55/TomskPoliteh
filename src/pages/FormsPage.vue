@@ -9,6 +9,11 @@ import { useGetForms } from '../app/stores/Forms';
 
 const formStore = useGetForms();
 const router = useRouter();
+
+const addForm = () => {
+  router.push('/addForm');
+};
+
 const logOut = () => {
   router.push('/');
 };
@@ -28,7 +33,7 @@ formStore.getFormsFromApi('/forms');
     <div class="rightMenu">
       <div class="rightMenu__heading">
         <h2 class="rightMenu__heading-title">Формы</h2>
-        <Button size="s" class="rightMenu__heading-btn">Создать форму</Button>
+        <Button size="s" class="rightMenu__heading-btn" @click="addForm">Создать форму</Button>
       </div>
 
       <div class="rightMenu__forms">
