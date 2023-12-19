@@ -9,6 +9,10 @@ import { ref } from 'vue';
 
 const valueInput = ref<string>('');
 const counter = ref<number>(0);
+
+const handler = () => {
+  alert(1);
+};
 </script>
 <template>
   <div class="createForm">
@@ -52,7 +56,7 @@ const counter = ref<number>(0);
 
       <div class="leftMenu__buttons">
         <Button color="white">Скрипт</Button>
-        <Button color="primary">Сохранить</Button>
+        <Button color="primary" @click="handler">Сохранить</Button>
       </div>
     </LeftMenu>
 
@@ -76,18 +80,20 @@ const counter = ref<number>(0);
             </div>
             <span class="remove" @click="counter--">Удалить поле</span>
           </div>
-          <Input
-            type="text"
-            name="name"
-            v-model:value="valueInput"
-            placeholder="Ваше значение"
-            :disabled="false"
-            class="input"
-            color="white"
-          />
-          <div class="isReq">
-            <Checkbox :required="false" /> <span class="question">Сделать поле обязательным</span>
-          </div>
+          <form @submit.prevent="handler">
+            <Input
+              type="text"
+              name="name"
+              v-model:value="valueInput"
+              placeholder="Ваше значение"
+              :disabled="false"
+              class="input"
+              color="white"
+            />
+            <div class="isReq">
+              <Checkbox :required="false" /> <span class="question">Сделать поле обязательным</span>
+            </div>
+          </form>
         </div>
       </div>
     </div>
