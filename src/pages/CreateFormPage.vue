@@ -3,6 +3,7 @@ import { RouterLink } from 'vue-router';
 import { LeftMenu } from '@/shared/leftMenu';
 import { Button } from '@/shared/button';
 import { BigButton } from '@/shared/bigButton';
+import { Input } from '@/shared/input';
 </script>
 <template>
   <div class="createForm">
@@ -55,10 +56,15 @@ import { BigButton } from '@/shared/bigButton';
         <h2 class="rightMenu__text-title">Поля</h2>
         <p class="rightMenu__text-subtitle">Скрытые поля</p>
       </div>
-      <BigButton>
+      <BigButton class="rightMenu__bigButton">
         <p>Добавить поле</p>
         <img src="../app/assets/images/plus.svg" alt="AddInput" />
       </BigButton>
+
+      <div class="rightMenu__field">
+        <h2 class="rightMenu__field-title">Поля</h2>
+        <Input type="text" name="name" placeholder="Логин" :disabled="false" class="input" />
+      </div>
     </div>
   </div>
 </template>
@@ -121,11 +127,27 @@ import { BigButton } from '@/shared/bigButton';
       font-weight: 500;
     }
   }
+  &__bigButton {
+    margin-top: 1.875rem;
+  }
+  &__field {
+    margin-top: 3.125rem;
+    &-title {
+      font-size: 1.5rem;
+      font-weight: 500;
+      line-height: 2rem;
+    }
+  }
 }
 a:-webkit-any-link {
   text-decoration: none;
 }
 .router-link-active {
   color: $primary_color;
+}
+.input {
+  &::placeholder {
+    background-color: #fff;
+  }
 }
 </style>
