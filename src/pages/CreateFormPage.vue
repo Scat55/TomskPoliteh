@@ -2,6 +2,7 @@
 import { RouterLink } from 'vue-router';
 import { LeftMenu } from '@/shared/leftMenu';
 import { Button } from '@/shared/button';
+import { BigButton } from '@/shared/bigButton';
 </script>
 <template>
   <div class="createForm">
@@ -54,6 +55,10 @@ import { Button } from '@/shared/button';
         <h2 class="rightMenu__text-title">Поля</h2>
         <p class="rightMenu__text-subtitle">Скрытые поля</p>
       </div>
+      <BigButton>
+        <p>Добавить поле</p>
+        <img src="../app/assets/images/plus.svg" alt="AddInput" />
+      </BigButton>
     </div>
   </div>
 </template>
