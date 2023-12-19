@@ -4,6 +4,11 @@ import { LeftMenu } from '@/shared/leftMenu';
 import { Button } from '@/shared/button';
 import { BigButton } from '@/shared/bigButton';
 import { Input } from '@/shared/input';
+import { Checkbox } from '@/shared/checkbox';
+import { ref } from 'vue';
+
+const valueInput = ref<string>('');
+const counter = ref<number>(0);
 </script>
 <template>
   <div class="createForm">
@@ -56,21 +61,34 @@ import { Input } from '@/shared/input';
         <h2 class="rightMenu__text-title">Поля</h2>
         <p class="rightMenu__text-subtitle">Скрытые поля</p>
       </div>
-      <BigButton class="rightMenu__bigButton">
+      <BigButton class="rightMenu__bigButton" @click="counter++">
         <p>Добавить поле</p>
         <img src="../app/assets/images/plus.svg" alt="AddInput" />
       </BigButton>
 
       <div class="rightMenu__field">
-        <h2 class="rightMenu__field-title">Поля</h2>
-        <Input
-          type="text"
-          name="name"
-          placeholder="Логин"
-          :disabled="false"
-          class="input"
-          color="white"
-        />
+        <h2 class="rightMenu__field-title" v-if="counter > 0">Поля</h2>
+        <div class="rightMenu__field-content" v-for="count in counter">
+          <div class="rightMenu__field-spans" v-if="counter > 0">
+            <div>
+              <span class="value">{{ valueInput }}</span>
+              <span class="value"> Контакт</span>
+            </div>
+            <span class="remove" @click="counter--">Удалить поле</span>
+          </div>
+          <Input
+            type="text"
+            name="name"
+            v-model:value="valueInput"
+            placeholder="Ваше значение"
+            :disabled="false"
+            class="input"
+            color="white"
+          />
+          <div class="isReq">
+            <Checkbox :required="false" /> <span class="question">Сделать поле обязательным</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -139,10 +157,20 @@ import { Input } from '@/shared/input';
   }
   &__field {
     margin-top: 3.125rem;
+    max-height: 21.875rem;
+    overflow: auto;
     &-title {
       font-size: 1.5rem;
       font-weight: 500;
       line-height: 2rem;
+    }
+    &-spans {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 1.875rem;
+      margin-bottom: 0.5625rem;
     }
   }
 }
@@ -157,5 +185,30 @@ a:-webkit-any-link {
   &::placeholder {
     background-color: #fff;
   }
+}
+.value {
+  font-size: 1rem;
+  font-weight: 400;
+  color: $black_color;
+  opacity: 0.5;
+}
+
+.remove {
+  font-size: 1rem;
+  color: $primary_color;
+  font-weight: 400;
+  cursor: pointer;
+}
+.isReq {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.8125rem;
+  margin-bottom: 0.625rem;
+}
+.question {
+  color: #212121;
+  font-size: 0.875rem;
+  font-weight: 500;
 }
 </style>

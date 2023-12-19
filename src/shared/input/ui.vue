@@ -10,7 +10,7 @@ interface Props {
   placeholder?: string;
   disabled?: boolean;
   error?: ErrorObject[];
-  value?: Ref<string>;
+  value?: Ref<string> | string;
   color?: string;
   name: string;
 }
