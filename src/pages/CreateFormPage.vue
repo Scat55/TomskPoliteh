@@ -5,19 +5,38 @@ import { Button } from '@/shared/button';
 import { BigButton } from '@/shared/bigButton';
 import { Input } from '@/shared/input';
 import { Checkbox } from '@/shared/checkbox';
-import { ref } from 'vue';
+import useVuelidate from '@vuelidate/core';
+import { helpers, required } from '@vuelidate/validators';
+import { computed, ref } from 'vue';
 
 const valueInput = ref<string>('');
 const counter = ref<number>(0);
-const required = ref<boolean>(false);
+const require = ref<boolean>(false);
 const isChecked = ref<boolean>(false);
 
-const handler = () => {
-  if (isChecked.value === true || valueInput.value !== '') {
-    alert(1);
-  } else {
-    alert('Ошибка');
+const rules = computed(() => ({
+  valueInput: {
+    required: helpers.withMessage(`Обязательное поле`, required)
   }
+}));
+const v = useVuelidate(rules, {
+  valueInput
+});
+
+const checked = computed((v) => {
+  if (isChecked.value == false) {
+    return v.valueInput.$model;
+  } else {
+    return '';
+  }
+});
+
+const handler = () => {
+  v.value.$touch(); // Проверка на ошибки
+
+  if (v.value.$error) return;
+
+  alert(1);
 };
 </script>
 <template>
@@ -91,16 +110,16 @@ const handler = () => {
             <Input
               type="text"
               name="name"
-              v-model:value="valueInput"
               placeholder="Ваше значение"
               :disabled="false"
               class="input"
               color="white"
-              :required="required"
+              v-model:value="v.valueInput.$model"
+              :error="v.valueInput.$errors"
             />
 
             <div class="isReq">
-              <Checkbox :required="false" v-model:checked="isChecked" />
+              <Checkbox v-model:checked="isChecked" />
               <span class="question">Сделать поле обязательным</span>
             </div>
           </div>
